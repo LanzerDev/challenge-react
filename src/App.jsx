@@ -1,19 +1,29 @@
+import React, {useState} from "react"
 import { MovieForm } from "./components/MovieForm/MovieForm"
 import { MovieCard } from "./components/MovieCard/MovieCard"
 import './App.css'
 
 function App() {
- 
-  const agregar = (saludo) => {
-    console.log(saludo)
+  const [listPeliculas, setListPeliculas] = useState([]);
+
+  const agregarPelicula = (movieData) => {
+    console.log(movieData)
+    setListPeliculas([...listPeliculas, movieData]);
   }
 
 
   return (
     <>
+      <MovieForm funcAgregarPelicula={agregarPelicula}></MovieForm>
       <div className="container">
-        <MovieForm funcAgregar={agregar}></MovieForm>
-        <MovieCard nombre="Spiderman" duracion="120min" calificacion="10"></MovieCard>
+        {listPeliculas.map((pelicula, index) => (
+          <MovieCard
+            key={index}
+            nombre={pelicula.nombre}
+            duracion={pelicula.duracion}
+            calificacion={pelicula.calificacion}
+          />
+        ))}
       </div>
     </>
   )

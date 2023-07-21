@@ -7,10 +7,14 @@ export function MovieCard({nombre, calificacion, duracion}){
         <div className="movie-card">
             <label>{nombre}</label>
             <div className="datos-pelicula">
-                <label htmlFor="">calificacion:</label>
-                <p>{calificacion}</p>
-                <label htmlFor="">duracion:</label>
-                <p>{duracion}</p>
+                <div>
+                    <label htmlFor="">calificacion:</label>
+                    <p>{calificacion}</p>
+                </div>
+                <div>
+                    <label htmlFor="">duracion:</label>
+                    <p>{duracion}</p>
+                </div>
             </div>
         </div>
     )
