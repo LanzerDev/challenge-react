@@ -1,0 +1,31 @@
+h1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.movie-card{
+    background-color: antiquewhite;
+    width: 60%;
+    height: 120px;
+    border-radius: 10px;
+    margin: 0;
+}
+
+.movie-card label {
+    display: block;
+    font-weight: bold;
+  }
+
+.nombre-pelicula{
+    display: flex;
+    justify-content: space-around;
+}
+
+.datos-pelicula{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 20px;
+}

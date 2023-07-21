@@ -1,0 +1,14 @@
+/* MovieList styles */
+.movie-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .movie-card h2 {
+    margin-top: 0;
+  }
+  
+  .movie-card p {
+    margin-bottom: 5px;
+  }
