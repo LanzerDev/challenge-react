@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import { MovieForm } from "./components/MovieForm/MovieForm"
-import { MovieCard } from "./components/MovieCard/MovieCard"
+import MovieList from "./components/MovieList/MovieList";
 import './App.css'
 
 function App() {
@@ -11,20 +11,10 @@ function App() {
     setListPeliculas([...listPeliculas, movieData]);
   }
 
-
   return (
     <>
       <MovieForm funcAgregarPelicula={agregarPelicula}></MovieForm>
-      <div className="container">
-        {listPeliculas.map((pelicula, index) => (
-          <MovieCard
-            key={index}
-            nombre={pelicula.nombre}
-            duracion={pelicula.duracion}
-            calificacion={pelicula.calificacion}
-          />
-        ))}
-      </div>
+      <MovieList listPeliculas={listPeliculas}></MovieList>
     </>
   )
 }
