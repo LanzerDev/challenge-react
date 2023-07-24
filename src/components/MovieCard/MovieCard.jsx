@@ -24,7 +24,7 @@ export function MovieCard({nombre, calificacion, duracion}){
             <div className="datos-pelicula">
                 <div>
                     <label htmlFor="">calificacion:</label>
-                    <p>{calificacion}</p>
+                    <p>{calificacion/100}</p>
                 </div>
                 <div>
                     <label htmlFor="">duracion:</label>

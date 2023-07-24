@@ -1,6 +1,7 @@
 import './MovieFormStyles.css'
-import { useState, useRef, useEffect } from 'react';
-import useFormatoTexto from '../../hooks/useFormatoTexto';
+import { useState, useRef } from 'react';
+import { CustomAlert } from '../Alert/Alert';
+
 
 
 // eslint-disable-next-line react/prop-types
@@ -16,15 +17,24 @@ export function MovieForm({ funcAgregarPelicula }) {
   const inputRef3 = useRef(null);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    let { name, value } = e.target;
+
+    //validacion para que la calificacion tenga rango del 1 al 100
+    if(name === "calificacion"){
+      value = parseInt(e.target.value, 10);
+      if (value >= 1 && value <= 100) {
+        setCalificacion(value);
+      }
+    }
+
     setMovieData({ ...movieData, [name]: value });
   };
 
   const handleBtnClick = () => {
     if (movieData.nombre && movieData.calificacion && movieData.duracion) {
 
-      const res = validarTexto(movieData.duracion);
-      if(res === "1"){
+      const valido = validarTexto(movieData.duracion);
+      if (valido === "1") {
         funcAgregarPelicula(movieData);
 
         setMovieData({
@@ -32,16 +42,18 @@ export function MovieForm({ funcAgregarPelicula }) {
           duracion: '',
           calificacion: '',
         });
+
+        setCalificacion(0);
       } else {
-        alert("Por favor, especifique el tiempo en horas o minutos (por ejemplo, 2,5h o 150m)");
+        setOpen(true);
       }
     }
   }
 
-  const validarTexto = (texto) =>{
+  const validarTexto = (texto) => {
     const regexHoras = /^\d+(,\d+)?\s*h$/i;
     const regexMinutos = /^\d+(,\d+)?\s*m$/i;
-  
+
     if (regexHoras.test(texto)) {
       return "1";
     } else if (regexMinutos.test(texto)) {
@@ -59,9 +71,22 @@ export function MovieForm({ funcAgregarPelicula }) {
     }
   };
 
+  const [open, setOpen] = useState(false);
+  const [calificacion, setCalificacion] = useState(0);
+
+  const handleAlertClose = () => {
+    setOpen(false);
+  }
+
   return (
     <div className="movie-form">
       <div>
+        <CustomAlert
+        open={open}
+        onClose={handleAlertClose}
+        severity={"warning"}
+        message={"Por favor, especifique el tiempo en horas o minutos (por ejemplo, 2,5h o 150m)"}
+        ></CustomAlert>
         <label htmlFor="nombre">Nombre Película:</label>
         <input
           ref={inputRef1}
@@ -77,13 +102,15 @@ export function MovieForm({ funcAgregarPelicula }) {
         <label htmlFor="calificacion">Calificación:</label>
         <input
           ref={inputRef2}
-          type="number"
+          type="tel"
+          min={1}
+          max={100}
+          maxLength={3}
           id="calificacion"
           name="calificacion"
-          value={movieData.calificacion}
+          value={calificacion}
           onChange={handleChange}
           onKeyDown={(event) => handleKeyDown(event, inputRef3)}
-          maxLength={3}
         />
       </div>
       <div>
