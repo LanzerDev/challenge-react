@@ -6,16 +6,16 @@ h1 {
   }
   
   .movie-card {
-    background-color: rgba(226, 160, 73, 0.8); /* Usaremos el mismo color del contenedor pero con una transparencia para que se vea más integrado */
+    background-color: rgba(216, 222, 241, 0.8);
     width: 60%;
     height: 120px;
     border-radius: 10px;
     margin: 0;
-    padding: 10px; /* Agregamos un poco de espacio interno para separar los elementos internos */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil para resaltar la tarjeta */
-    display: flex; /* Añadimos un flex container para organizar los elementos internos */
-    flex-direction: column; /* Organizaremos los elementos en columna */
-    justify-content: space-between; /* Distribuimos los elementos verticalmente con espacio entre ellos */
+    padding: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
   }
   
   .movie-card label {
@@ -25,7 +25,7 @@ h1 {
   .nombre-pelicula {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 10px; /* Agregamos un poco de margen inferior para separar los elementos */
+    margin-bottom: 10px;
   }
   
   .datos-pelicula {

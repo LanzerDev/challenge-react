@@ -1,8 +1,11 @@
 /* MovieForm styles */
 .movie-form {
-    border: 1px solid #ccc;
+    border: none;
     padding: 20px;
     margin-bottom: 20px;
+    background-color: #ffffff; /* Un color gris claro como fondo */
+    border-radius: 5px;
+    box-shadow: 0 4px 18px rgba(0, 54, 134, 0.1); /* Sutil sombra para resaltar el contenedor */
   }
   
   .movie-form div {
