@@ -1,36 +1,66 @@
 import './MovieCardStyle.css'
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import { CardMedia } from '@mui/material';
+import { useEffect, useState } from 'react';
 
-// eslint-disable-next-line react/prop-types
-export function MovieCard({nombre, calificacion, duracion}){
+export function MovieCard({ nombre, calificacion, duracion }) {
+  const [image, setImage] = useState("");
 
-    const convertirDuracion = (duracionProp) => {
-        if (duracionProp.includes('m')) {
-          const numeroMinutos = parseFloat(duracionProp);
-          if (!isNaN(numeroMinutos)) {
-            const horasDecimal = numeroMinutos / 60;
-            return `${horasDecimal.toFixed(1)}h`;
-          }
-        } else if (duracionProp.includes('h')) {
-          return duracionProp;
-        }
-        return duracionProp;
-      };
+  const buscarImagen = (imagen) => {
+    fetch(`http://localhost:3000/search?q=${imagen}`)
+    .then((response) => response.json())
+    .then((data) => {
+      setImage(data)
+    })
+    .catch((error) => {
+      console.error('Error al obtener los resultados:', error);
+    });
+  }
 
-    const duracionEnHoras = convertirDuracion(duracion)
+  useEffect(() => {
+    buscarImagen(nombre)
+  }, []);
 
-    return(
-        <div className="movie-card">
-            <label>{nombre}</label>
-            <div className="datos-pelicula">
-                <div>
-                    <label htmlFor="">calificacion:</label>
-                    <p>{calificacion/100}</p>
-                </div>
-                <div>
-                    <label htmlFor="">duracion:</label>
-                    <p>{duracionEnHoras}</p>
-                </div>
-            </div>
-        </div>
-    )
+  const convertirDuracion = (duracionProp) => {
+    if (duracionProp.includes('m')) {
+      const numeroMinutos = parseFloat(duracionProp);
+      if (!isNaN(numeroMinutos)) {
+        const horasDecimal = numeroMinutos / 60;
+        return `${horasDecimal.toFixed(1)}h`;
+      }
+    } else if (duracionProp.includes('h')) {
+      return duracionProp;
+    }
+    return duracionProp;
+  };
+
+  const duracionEnHoras = convertirDuracion(duracion)
+
+  return (
+    <div className="">
+      <Card sx={{ minWidth: 355 }}>
+        <CardMedia
+          sx={{ height: 140 }}
+          image={image}
+          title={nombre}
+        />
+        <CardContent>
+          <Typography variant="h5" component="div">
+            {nombre}
+          </Typography>
+          <br />
+          <Typography sx={{ mb: 1.5 }} color="text.secondary">
+            Calificacion: <strong>{calificacion}</strong>
+          </Typography>
+          <Typography sx={{ mb: 1.5 }} color="text.secondary">
+            Duración: <strong>{duracionEnHoras}</strong>
+          </Typography>
+        </CardContent>
+      </Card>
+    </div>
+
+
+  )
 }

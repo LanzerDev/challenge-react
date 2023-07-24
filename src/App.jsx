@@ -7,7 +7,6 @@ function App() {
   const [listPeliculas, setListPeliculas] = useState([]);
 
   const agregarPelicula = (movieData) => {
-    console.log(movieData)
     setListPeliculas([...listPeliculas, movieData]);
   }
 

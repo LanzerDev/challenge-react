@@ -1,11 +1,16 @@
 import './MovieFormStyles.css'
 import { useState, useRef } from 'react';
 import { CustomAlert } from '../Alert/Alert';
+import { Button, TextField } from '@mui/material';
 
 
 
 // eslint-disable-next-line react/prop-types
 export function MovieForm({ funcAgregarPelicula }) {
+
+
+
+
   const [movieData, setMovieData] = useState({
     nombre: '',
     duracion: '',
@@ -20,7 +25,7 @@ export function MovieForm({ funcAgregarPelicula }) {
     let { name, value } = e.target;
 
     //validacion para que la calificacion tenga rango del 1 al 100
-    if(name === "calificacion"){
+    if (name === "calificacion") {
       value = parseInt(e.target.value, 10);
       if (value >= 1 && value <= 100) {
         setCalificacion(value);
@@ -42,7 +47,6 @@ export function MovieForm({ funcAgregarPelicula }) {
           duracion: '',
           calificacion: '',
         });
-
         setCalificacion(0);
       } else {
         setOpen(true);
@@ -80,15 +84,16 @@ export function MovieForm({ funcAgregarPelicula }) {
 
   return (
     <div className="movie-form">
-      <div>
         <CustomAlert
-        open={open}
-        onClose={handleAlertClose}
-        severity={"warning"}
-        message={"Por favor, especifique el tiempo en horas o minutos (por ejemplo, 2,5h o 150m)"}
+          open={open}
+          onClose={handleAlertClose}
+          severity={"warning"}
+          message={"Por favor, especifique el tiempo en horas o minutos (por ejemplo, 2,5h o 150m)"}
         ></CustomAlert>
-        <label htmlFor="nombre">Nombre Película:</label>
-        <input
+        <TextField 
+          fullWidth
+          label="Nombre pelicula" 
+          variant="standard"
           ref={inputRef1}
           type="text"
           id="nombre"
@@ -97,10 +102,10 @@ export function MovieForm({ funcAgregarPelicula }) {
           onChange={handleChange}
           onKeyDown={(event) => handleKeyDown(event, inputRef2)}
         />
-      </div>
-      <div>
-        <label htmlFor="calificacion">Calificación:</label>
-        <input
+        <TextField 
+          fullWidth
+          label="Calificacion" 
+          variant="standard" 
           ref={inputRef2}
           type="tel"
           min={1}
@@ -112,10 +117,10 @@ export function MovieForm({ funcAgregarPelicula }) {
           onChange={handleChange}
           onKeyDown={(event) => handleKeyDown(event, inputRef3)}
         />
-      </div>
-      <div>
-        <label htmlFor="duracion">Duración:</label>
-        <input
+        <TextField 
+          fullWidth
+          label="Duracion" 
+          variant="standard"
           ref={inputRef3}
           type="text"
           id="duracion"
@@ -124,8 +129,10 @@ export function MovieForm({ funcAgregarPelicula }) {
           onChange={handleChange}
           onKeyDown={(event) => handleKeyDown(event, inputRef1)}
         />
-      </div>
-      <button onClick={handleBtnClick}>Agregar</button>
+      <Button
+        variant="contained"
+        onClick={handleBtnClick}>Agregar
+      </Button>
     </div>
   );
 }
