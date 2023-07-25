@@ -39,10 +39,9 @@ export function MovieCard({ nombre, calificacion, duracion }) {
   const duracionEnHoras = convertirDuracion(duracion)
 
   return (
-    <div className="">
       <Card sx={{ minWidth: 355 }}>
         <CardMedia
-          sx={{ height: 140 }}
+          sx={{ height: 370 }}
           image={image}
           title={nombre}
         />
@@ -59,8 +58,5 @@ export function MovieCard({ nombre, calificacion, duracion }) {
           </Typography>
         </CardContent>
       </Card>
-    </div>
-
-
   )
 }

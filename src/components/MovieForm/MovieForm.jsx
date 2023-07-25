@@ -1,5 +1,5 @@
 import './MovieFormStyles.css'
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { CustomAlert } from '../Alert/Alert';
 import { Button, TextField } from '@mui/material';
 
@@ -7,19 +7,11 @@ import { Button, TextField } from '@mui/material';
 
 // eslint-disable-next-line react/prop-types
 export function MovieForm({ funcAgregarPelicula }) {
-
-
-
-
   const [movieData, setMovieData] = useState({
     nombre: '',
     duracion: '',
     calificacion: '',
   });
-
-  const inputRef1 = useRef(null);
-  const inputRef2 = useRef(null);
-  const inputRef3 = useRef(null);
 
   const handleChange = (e) => {
     let { name, value } = e.target;
@@ -67,14 +59,6 @@ export function MovieForm({ funcAgregarPelicula }) {
     }
   }
 
-
-  const handleKeyDown = (event, nextInputRef) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      nextInputRef.current.focus();
-    }
-  };
-
   const [open, setOpen] = useState(false);
   const [calificacion, setCalificacion] = useState(0);
 
@@ -94,19 +78,16 @@ export function MovieForm({ funcAgregarPelicula }) {
           fullWidth
           label="Nombre pelicula" 
           variant="standard"
-          ref={inputRef1}
           type="text"
           id="nombre"
           name="nombre"
           value={movieData.nombre}
           onChange={handleChange}
-          onKeyDown={(event) => handleKeyDown(event, inputRef2)}
         />
         <TextField 
           fullWidth
           label="Calificacion" 
           variant="standard" 
-          ref={inputRef2}
           type="tel"
           min={1}
           max={100}
@@ -115,19 +96,16 @@ export function MovieForm({ funcAgregarPelicula }) {
           name="calificacion"
           value={calificacion}
           onChange={handleChange}
-          onKeyDown={(event) => handleKeyDown(event, inputRef3)}
         />
         <TextField 
           fullWidth
-          label="Duracion" 
+          label="Duración" 
           variant="standard"
-          ref={inputRef3}
           type="text"
           id="duracion"
           name="duracion"
           value={movieData.duracion}
           onChange={handleChange}
-          onKeyDown={(event) => handleKeyDown(event, inputRef1)}
         />
       <Button
         variant="contained"

@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import {useState} from "react"
 import { MovieForm } from "./components/MovieForm/MovieForm"
 import MovieList from "./components/MovieList/MovieList";
 import './App.css'
