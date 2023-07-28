@@ -9,7 +9,6 @@ function MovieList({ listPeliculas }) {
   const [open, setOpen] = useState(false);
   const [searchInput, setSeaerchInput] = useState("");
 
-
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
 
@@ -26,7 +25,7 @@ function MovieList({ listPeliculas }) {
     .filter((pelicula) =>
       pelicula.nombre.toLowerCase().includes(searchInput.toLowerCase())
     )
-    .sort((a, b) => parseFloat(a.duracion) - parseFloat(b.duracion)); 
+    .sort((a, b) => parseFloat(b.duracion) - parseFloat(a.duracion)); 
 
 
   const handleAlertClose = () => {

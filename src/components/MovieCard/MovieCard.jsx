@@ -6,22 +6,22 @@ import { CardMedia } from '@mui/material';
 import { useEffect, useState } from 'react';
 
 export function MovieCard({ nombre, calificacion, duracion }) {
-  const [image, setImage] = useState("");
+  //const [image, setImage] = useState("");
 
-  const buscarImagen = (imagen) => {
-    fetch(`http://localhost:3000/search?q=${imagen}`)
-    .then((response) => response.json())
-    .then((data) => {
-      setImage(data)
-    })
-    .catch((error) => {
-      console.error('Error al obtener los resultados:', error);
-    });
-  }
+  //const buscarImagen = (imagen) => {
+  //  fetch(`http://localhost:3000/search?q=${imagen}`)
+  //  .then((response) => response.json())
+  //  .then((data) => {
+  //    setImage(data)
+  //  })
+  //  .catch((error) => {
+  //    console.log(error)
+  //  });
+  //}
 
-  useEffect(() => {
-    buscarImagen(nombre)
-  }, []);
+  //useEffect(() => {
+  //  buscarImagen(nombre)
+  //}, []);
 
   const convertirDuracion = (duracionProp) => {
     if (duracionProp.includes('m')) {
@@ -43,8 +43,8 @@ export function MovieCard({ nombre, calificacion, duracion }) {
       <Card sx={{ minWidth: 355 }}>
         <CardMedia
           sx={{ height: 140 }}
-          image={image}
           title={nombre}
+          style={{backgroundColor: "gray"}}
         />
         <CardContent>
           <Typography variant="h5" component="div">
