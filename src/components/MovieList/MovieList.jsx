@@ -3,6 +3,7 @@ import './movieliststyle.css'
 import { MovieCard } from '../MovieCard/MovieCard';
 import { CustomAlert } from '../Alert/Alert';
 import { TextField } from '@mui/material';
+import { Alert } from '@mui/material';
 
 function MovieList({ listPeliculas }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -25,21 +26,19 @@ function MovieList({ listPeliculas }) {
     .filter((pelicula) =>
       pelicula.nombre.toLowerCase().includes(searchInput.toLowerCase())
     )
+<<<<<<< HEAD
     .sort((a, b) => parseFloat(b.duracion) - parseFloat(a.duracion)); 
 
+=======
+    .sort((a, b) => parseFloat(a.duracion) - parseFloat(b.duracion));
+>>>>>>> 77c9835790a3d0c1500b16dcde28dd4f5b181075
 
   const handleAlertClose = () => {
     setOpen(false);
   }
 
   return (
-    <div className="container">
-      <CustomAlert
-        open={open}
-        onClose={handleAlertClose}
-        severity={"warning"}
-        message={"No se encontraron resultados."}
-      ></CustomAlert>
+    <>
       <TextField
         label="Ingrese pelicula"
         variant="standard"
@@ -47,17 +46,33 @@ function MovieList({ listPeliculas }) {
         value={searchTerm}
         onChange={handleSearchChange}
         placeholder="Buscar película..."
+        margin="normal"
       />
+      <div className="container">
+        <CustomAlert
+          open={open}
+          onClose={handleAlertClose}
+          severity={"warning"}
+          message={"No se encontraron resultados."}
+        >
 
-      {filteredMovies.map((pelicula, index) => (
-        <MovieCard
-          key={index}
-          nombre={pelicula.nombre}
-          duracion={pelicula.duracion}
-          calificacion={pelicula.calificacion}
-        />
-      ))}
-    </div>
+        </CustomAlert>
+
+        <Alert onClose={handleAlertClose} severity={"warning"}>
+          {"No se encontraron resultados."}
+        </Alert>
+
+
+        {filteredMovies.map((pelicula, index) => (
+          <MovieCard
+            key={index}
+            nombre={pelicula.nombre}
+            duracion={pelicula.duracion}
+            calificacion={pelicula.calificacion}
+          />
+        ))}
+      </div>
+    </>
   );
 }
 

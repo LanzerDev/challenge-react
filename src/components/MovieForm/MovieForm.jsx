@@ -1,5 +1,5 @@
 import './MovieFormStyles.css'
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { CustomAlert } from '../Alert/Alert';
 import { Button, TextField } from '@mui/material';
 
@@ -7,15 +7,21 @@ import { Button, TextField } from '@mui/material';
 
 // eslint-disable-next-line react/prop-types
 export function MovieForm({ funcAgregarPelicula }) {
+<<<<<<< HEAD
   const [open, setOpen] = useState(false);
   const [calificacion, setCalificacion] = useState(0);
+=======
+>>>>>>> 77c9835790a3d0c1500b16dcde28dd4f5b181075
   const [movieData, setMovieData] = useState({
     nombre: '',
     duracion: '',
     calificacion: '',
   });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 77c9835790a3d0c1500b16dcde28dd4f5b181075
   const handleChange = (e) => {
     let { name, value } = e.target;
 
@@ -62,6 +68,12 @@ export function MovieForm({ funcAgregarPelicula }) {
     }
   }
 
+<<<<<<< HEAD
+=======
+  const [open, setOpen] = useState(false);
+  const [calificacion, setCalificacion] = useState(0);
+
+>>>>>>> 77c9835790a3d0c1500b16dcde28dd4f5b181075
   const handleAlertClose = () => {
     setOpen(false);
   }
