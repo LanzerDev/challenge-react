@@ -41,15 +41,7 @@ export function MovieCard({ nombre, calificacion, duracion }) {
   return (
       <Card sx={{ minWidth: 355 }}>
         <CardMedia
-<<<<<<< HEAD
-<<<<<<< HEAD
           sx={{ height: 140 }}
-=======
-=======
->>>>>>> 77c9835790a3d0c1500b16dcde28dd4f5b181075
-          sx={{ height: 370 }}
-          image={image}
->>>>>>> 77c9835790a3d0c1500b16dcde28dd4f5b181075
           title={nombre}
           style={{backgroundColor: "gray"}}
         />

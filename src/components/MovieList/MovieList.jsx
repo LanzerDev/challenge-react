@@ -5,7 +5,7 @@ import { CustomAlert } from '../Alert/Alert';
 import { TextField } from '@mui/material';
 import { Alert } from '@mui/material';
 
-function MovieList({ listPeliculas }) {
+export function MovieList({ listPeliculas }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [open, setOpen] = useState(false);
   const [searchInput, setSeaerchInput] = useState("");
@@ -26,12 +26,8 @@ function MovieList({ listPeliculas }) {
     .filter((pelicula) =>
       pelicula.nombre.toLowerCase().includes(searchInput.toLowerCase())
     )
-<<<<<<< HEAD
     .sort((a, b) => parseFloat(b.duracion) - parseFloat(a.duracion)); 
 
-=======
-    .sort((a, b) => parseFloat(a.duracion) - parseFloat(b.duracion));
->>>>>>> 77c9835790a3d0c1500b16dcde28dd4f5b181075
 
   const handleAlertClose = () => {
     setOpen(false);
@@ -75,5 +71,3 @@ function MovieList({ listPeliculas }) {
     </>
   );
 }
-
-export default MovieList;
