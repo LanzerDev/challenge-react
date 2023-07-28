@@ -5,7 +5,7 @@ import { CustomAlert } from '../Alert/Alert';
 import { TextField } from '@mui/material';
 import { Alert } from '@mui/material';
 
-export function MovieList({ listPeliculas }) {
+function MovieList({ listPeliculas }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [open, setOpen] = useState(false);
   const [searchInput, setSeaerchInput] = useState("");
@@ -51,14 +51,8 @@ export function MovieList({ listPeliculas }) {
           severity={"warning"}
           message={"No se encontraron resultados."}
         >
-
         </CustomAlert>
-
-        <Alert onClose={handleAlertClose} severity={"warning"}>
-          {"No se encontraron resultados."}
-        </Alert>
-
-
+        
         {filteredMovies.map((pelicula, index) => (
           <MovieCard
             key={index}
@@ -71,3 +65,5 @@ export function MovieList({ listPeliculas }) {
     </>
   );
 }
+
+export default MovieList;
