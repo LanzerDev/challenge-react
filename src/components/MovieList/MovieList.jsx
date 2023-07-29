@@ -36,7 +36,7 @@ function MovieList({ listPeliculas }) {
   return (
     <>
       <TextField
-        label="Ingrese pelicula"
+        label="Buscar pelicula"
         variant="standard"
         type="text"
         value={searchTerm}
