@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { MovieCard } from '../MovieCard/MovieCard';
 import { CustomAlert } from '../Alert/Alert';
 import { TextField } from '@mui/material';
+import './../MovieList/MovieListStyle.css'
 
 function MovieList({ listPeliculas, eliminarPelicula}) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -41,6 +42,9 @@ function MovieList({ listPeliculas, eliminarPelicula}) {
         onChange={handleSearchChange}
         placeholder="Buscar película..."
         margin="normal"
+        sx={{
+          marginBottom: "30px"
+        }}
       />
       <div className="container">
         <CustomAlert
