@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import './movieliststyle.css'
 import { MovieCard } from '../MovieCard/MovieCard';
 import { CustomAlert } from '../Alert/Alert';
 import { TextField } from '@mui/material';
