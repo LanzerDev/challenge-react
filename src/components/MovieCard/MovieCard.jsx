@@ -140,7 +140,7 @@ export function MovieCard({ nombre, calificacion, duracion, id, eliminarPelicula
               src={image}
               alt={nombre}
               style={{
-                width: '100%',
+                width: '300px',
                 height: '100%',
                 objectFit: 'cover',
               }}

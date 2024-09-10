@@ -37,7 +37,7 @@ function App() {
 
   return (
     <>
-      <h1>Buscador de peliculas</h1>
+      <h1>Movie Rating</h1>
       <MovieForm funcAgregarPelicula={agregarPelicula}></MovieForm>
       <MovieList listPeliculas={listPeliculas} eliminarPelicula={eliminarPelicula}></MovieList>
     </>
