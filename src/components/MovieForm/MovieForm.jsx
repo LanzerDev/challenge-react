@@ -7,7 +7,9 @@ import { Button, TextField } from '@mui/material';
 export function MovieForm({ funcAgregarPelicula }) {
   const [open, setOpen] = useState(false);
   const [calificacion, setCalificacion] = useState(0);
+
   const [movieData, setMovieData] = useState({
+    id: 0,
     nombre: '',
     duracion: '',
     calificacion: '',
@@ -23,7 +25,6 @@ export function MovieForm({ funcAgregarPelicula }) {
         setCalificacion(value);
       }
     }
-
     setMovieData({ ...movieData, [name]: value });
   };
 
@@ -35,6 +36,7 @@ export function MovieForm({ funcAgregarPelicula }) {
         funcAgregarPelicula(movieData);
 
         setMovieData({
+          id: 0,
           nombre: '',
           duracion: '',
           calificacion: '',

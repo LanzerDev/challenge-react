@@ -3,9 +3,8 @@ import './movieliststyle.css'
 import { MovieCard } from '../MovieCard/MovieCard';
 import { CustomAlert } from '../Alert/Alert';
 import { TextField } from '@mui/material';
-import { Alert } from '@mui/material';
 
-function MovieList({ listPeliculas }) {
+function MovieList({ listPeliculas, eliminarPelicula}) {
   const [searchTerm, setSearchTerm] = useState("");
   const [open, setOpen] = useState(false);
   const [searchInput, setSeaerchInput] = useState("");
@@ -24,7 +23,7 @@ function MovieList({ listPeliculas }) {
 
   const filteredMovies = listPeliculas
     .filter((pelicula) =>
-      pelicula.nombre.toLowerCase().includes(searchInput.toLowerCase())
+      pelicula.nombre?.toLowerCase().includes(searchInput.toLowerCase())
     )
     .sort((a, b) => parseFloat(b.duracion) - parseFloat(a.duracion)); 
 
@@ -36,7 +35,7 @@ function MovieList({ listPeliculas }) {
   return (
     <>
       <TextField
-        label="Buscar pelicula"
+        label="Buscar peliculas"
         variant="standard"
         type="text"
         value={searchTerm}
@@ -56,9 +55,11 @@ function MovieList({ listPeliculas }) {
         {filteredMovies.map((pelicula, index) => (
           <MovieCard
             key={index}
+            id={pelicula.id}
             nombre={pelicula.nombre}
             duracion={pelicula.duracion}
             calificacion={pelicula.calificacion}
+            eliminarPelicula={eliminarPelicula}
           />
         ))}
       </div>
